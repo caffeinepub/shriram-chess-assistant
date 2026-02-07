@@ -2,12 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-publish-the-current-shriram-chess-assistant-build-by-running-a-clean-build-and-deployment-so-the-app-is-accessible-via-its-public-canister-url-and-verify-that-in-app-sharing-uses-the-deployed-url",
-      "featureTitle": "Publish the current Shriram Chess Assistant build by running a clean build and deployment so the app is accessible via its public canister URL, and verify that in-app sharing uses the deployed URL.",
+      "featureId": "feature-fully-review-and-correct-all-chess-learning-assistant-examples-in-frontend-src-features-learning-examples-ts-so-that-every-step-to-step-transition-represents-a-legal-chess-move-for-the-piece-being-moved-and-each-step-s-board-position-move-text-and-lastmove-coordinates-are-consistent-with-each-other-including-the-scholar-s-mate-basic-checkmate-example-where-bishop-queen-moves-were-reported-incorrect",
+      "featureTitle": "Fully review and correct all Chess Learning Assistant examples in frontend/src/features/learning/examples.ts so that every step-to-step transition represents a legal chess move for the piece being moved, and each step’s board position, move text, and lastMove coordinates are consistent with each other (including the “Scholar's Mate (Basic Checkmate)” example where bishop/queen moves were reported incorrect).",
       "files": [
-        "frontend/PUBLISHING.md",
-        "frontend/src/features/hosting/HostingView.tsx",
-        "frontend/src/lib/share.ts"
+        "frontend/src/features/learning/examples.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -17,7 +15,26 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-8"
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-lightweight-runtime-validation-for-learning-examples-that-runs-in-development-and-or-at-app-startup-to-detect-invalid-example-data-e-g-lastmove-not-matching-the-board-diff-illegal-piece-movement-or-inconsistent-move-notation-vs-coordinates-and-present-a-clear-english-error-message-in-the-learning-ui-if-an-example-is-invalid-so-incorrect-examples-are-not-silently-shown",
+      "featureTitle": "Add a lightweight runtime validation for learning examples that runs in development (and/or at app startup) to detect invalid example data (e.g., lastMove not matching the board diff, illegal piece movement, or inconsistent move notation vs. coordinates), and present a clear English error message in the Learning UI if an example is invalid so incorrect examples are not silently shown.",
+      "files": [
+        "frontend/src/features/learning/LearningView.tsx",
+        "frontend/src/features/learning/exampleValidation.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
       ],
       "confidence": "high"
     }

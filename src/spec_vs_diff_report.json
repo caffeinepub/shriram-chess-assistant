@@ -1,54 +1,48 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-07T16:59:24.818Z",
-  "summary": "REQ-8 is only partially addressed in code/docs: share utilities now use the runtime origin (which should match the deployed canister URL), and a publishing checklist was added. However, the diff does not provide evidence of an actual deployment/publish configuration or verification, nor does it show the Header Share menu wiring/toast behavior required by the acceptance criteria.",
+  "generatedAt": "2026-02-07T17:53:35.018Z",
+  "summary": "The diff adds a development-time learning example validator and wires it into the Learning view with an English error alert. The examples file is modified, but the provided diff is truncated before showing the full set of example steps (notably the full Scholar’s Mate sequence), so full compliance with the “all examples corrected/fully legal” requirement cannot be verified from the evidence shown.",
   "missing_requirements": [
     {
-      "id": "REQ-8",
-      "requirement": "Publish the current build so the app is accessible via its public canister URL, and verify in-app sharing uses the deployed URL (WhatsApp share + Copy Link with success toast).",
-      "reason": "The diff adds sharing utilities and a publishing checklist, but provides no evidence of (a) deployment being performed/configured (e.g., dfx config changes, canister IDs, deploy scripts) or (b) the Header Share menu implementation showing the required behaviors (WhatsApp prefilled message including deployed URL; Copy Link copies deployed URL and shows a success toast). The referenced header component is not included in the diff content.",
+      "id": "REQ-11",
+      "requirement": "Fully review and correct all Chess Learning Assistant examples in frontend/src/features/learning/examples.ts so that every step-to-step transition represents a legal chess move and each step’s board position, move text, and lastMove coordinates are consistent (including correcting the Scholar's Mate example).",
+      "reason": "examples.ts is modified, but the diff excerpt is truncated and does not include the complete set of steps (especially the full “Scholar's Mate (Basic Checkmate)” sequence). From the visible excerpt alone, it’s not possible to confirm that every step in every example is legal and consistent with lastMove/move text end-to-end.",
       "evidence": [
-        "frontend/src/lib/share.ts",
-        "frontend/PUBLISHING.md",
-        "frontend-file-summaries.txt (mentions AppHeader Share menu behavior, but AppHeader diff not shown)"
+        "frontend/src/features/learning/examples.ts (truncated)"
       ]
     },
     {
-      "id": "REQ-8",
-      "requirement": "A clean build completes without errors for both frontend and backend.",
-      "reason": "Build success cannot be verified from the provided diff summary; there is no CI/log output or build verification evidence included.",
+      "id": "REQ-12",
+      "requirement": "If an example contains invalid step data, the Learning view shows a clear English message indicating the example is invalid and should not render misleading steps.",
+      "reason": "The LearningView shows a destructive Alert when invalid data is detected and appears to hide MoveStepper when errors exist, but the diff is truncated before confirming whether the chessboard/step rendering is also suppressed in the error case (i.e., ensuring misleading steps are not rendered at all).",
       "evidence": [
-        "<file-diff> summary only (no build logs/config changes shown)"
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "requirement": "The deployed app is accessible via its public canister URL after publish.",
-      "reason": "No deployment artifacts or configuration updates are shown that would indicate a publish/deploy was performed or that a public canister URL was produced/validated.",
-      "evidence": [
-        "frontend/PUBLISHING.md (incomplete/truncated, does not show an executed deploy or resulting URL)"
+        "frontend/src/features/learning/LearningView.tsx (truncated)"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Added backend state migration module and wired actor migration.",
-      "reason": "The BuildRequest allows adding backend/migration.mo only if state migration is required. The diff adds backend/migration.mo and references it from backend/main.mo, but the diff summary does not contain evidence that a state migration was required for this publish-only request.",
+      "description": "A visual warning marker (\"⚠️\") appended to example titles in the example selector when validation errors exist.",
+      "reason": "REQ-12 requires a clear English error message in the Learning UI; it does not request adding warning icons/badges in the selector list.",
       "evidence": [
-        "backend/migration.mo",
-        "backend/main.mo"
+        "frontend/src/features/learning/LearningView.tsx (truncated) — \"{isDevelopment && validationErrors.has(example.id) && ' ⚠️'}\""
+      ]
+    },
+    {
+      "description": "Console warning logging of validation errors.",
+      "reason": "REQ-12 only specifies UI messaging/behavior; console logging is not requested.",
+      "evidence": [
+        "frontend/src/features/learning/LearningView.tsx (truncated) — console.warn(...)"
       ]
     }
   ],
   "confidence": 0.62,
   "changed_files": [
-    "backend/main.mo",
-    "backend/migration.mo",
     "frontend-file-summaries.txt",
-    "frontend/PUBLISHING.md",
-    "frontend/src/features/hosting/HostingView.tsx",
-    "frontend/src/lib/share.ts",
+    "frontend/src/features/learning/LearningView.tsx",
+    "frontend/src/features/learning/exampleValidation.ts",
+    "frontend/src/features/learning/examples.ts",
     "project_state.json"
   ]
 }

@@ -1,37 +1,60 @@
 {
   "kind": "build_request",
-  "title": "Publish the deployed Shriram Chess Assistant build",
+  "title": "Fully revalidate and correct all Chess Learning Assistant example moves",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-8",
-      "text": "Publish the current Shriram Chess Assistant build by running a clean build and deployment so the app is accessible via its public canister URL, and verify that in-app sharing uses the deployed URL.",
-      "target": "both",
+      "id": "REQ-11",
+      "text": "Fully review and correct all Chess Learning Assistant examples in frontend/src/features/learning/examples.ts so that every step-to-step transition represents a legal chess move for the piece being moved, and each step’s board position, move text, and lastMove coordinates are consistent with each other (including the “Scholar's Mate (Basic Checkmate)” example where bishop/queen moves were reported incorrect).",
+      "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "recent-messages"
         ],
         "quotes": [
-          "publish it."
+          "revalidate all the example moves and check again.",
+          "fully review",
+          "yes, update with correct example",
+          "pls build",
+          "move was incorrect, bishop and queen did not follow rules."
         ]
       },
       "acceptanceCriteria": [
-        "A clean build completes without errors for both frontend and backend.",
-        "The deployed app is accessible via its public canister URL after publish.",
-        "In the deployed app, the Header Share menu actions work: (1) “Share on WhatsApp” opens WhatsApp with a prefilled message that includes the deployed app URL, and (2) “Copy Link” copies the deployed app URL and shows a success toast.",
-        "All user-facing text remains in English."
+        "In the Learning view, each example can be stepped through from beginning to end without any step depicting an illegal move for the piece moved in that step.",
+        "For every step that includes lastMove, the piece shown on the board actually moved from lastMove.from to lastMove.to compared to the previous step, with any captured piece removed correctly.",
+        "The “Scholar's Mate (Basic Checkmate)” sequence is corrected so that bishop/queen/knight moves follow standard chess movement rules and match the shown board positions.",
+        "All user-facing descriptions and move strings remain in English and continue to describe the corrected positions accurately."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Add a lightweight runtime validation for learning examples that runs in development (and/or at app startup) to detect invalid example data (e.g., lastMove not matching the board diff, illegal piece movement, or inconsistent move notation vs. coordinates), and present a clear English error message in the Learning UI if an example is invalid so incorrect examples are not silently shown.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "revalidate all the example moves and check again.",
+          "fully review"
+        ]
+      },
+      "acceptanceCriteria": [
+        "If an example contains invalid step data, the Learning view shows a clear English message indicating the example is invalid and should not render misleading steps.",
+        "If all examples are valid, the Learning view behaves exactly as before (no new warnings, normal rendering and stepping).",
+        "Validation does not require editing any immutable frontend paths (e.g., frontend/src/hooks/useActor.ts)."
       ]
     }
   ],
   "constraints": [
-    "Backend must remain a single Motoko actor in backend/main.mo; add backend/migration.mo only if state migration is required.",
-    "Do not edit files under frontend/src/components/ui or any paths listed in frontend.immutablePaths.",
-    "No third-party authentication providers; only Internet Identity is supported."
+    "Use English for all user-facing text.",
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or any files under frontend/src/components/ui (compose instead of editing).",
+    "Keep backend as a single Motoko actor in backend/main.mo; do not introduce additional backend services."
   ],
   "nonGoals": [
-    "Adding new product features or new pages beyond publishing the current build.",
-    "Changing the chess rules assistant behavior/content beyond what already exists.",
-    "Introducing any external database or third-party backend services."
+    "Adding new learning examples or new chess lessons beyond correcting and validating the existing ones.",
+    "Implementing a full chess engine or full check/checkmate legality evaluation for arbitrary positions (focus only on validating the example step data).",
+    "Changing app branding, logo assets, WhatsApp sharing, hosting/publishing flow, or unrelated UI redesign."
   ],
   "imageRequirements": {
     "required": [],

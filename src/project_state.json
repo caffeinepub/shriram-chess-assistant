@@ -1,15 +1,16 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 7,
+  "projectStateVersion": 11,
   "summary": "Build and host an online AI chatbot called \"Shriram Chess Assistant\" to answer chess rules questions across formats, provide learning examples with board/move visualization, operate as a text-first (just words) app, and be easily shareable with friends via WhatsApp.",
   "architectural_notes": [
     "Product: text-first chat app with optional chessboard/move visualization for learning examples.",
     "Distribution: provide a shareable public URL and WhatsApp sharing entry point."
   ],
   "known_issues": [
-    "Build/app generation failed when attempting to add the WhatsApp share button; user requested retry."
+    "Build/app generation failed when attempting to add the WhatsApp share button; user requested retry.",
+    "Basic checkmate learning example contains incorrect/illegal bishop and queen moves; user requested full review and correction of all example moves."
   ],
-  "isFixRequest": false,
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-create-a-text-first-chat-experience-titled-shriram-chess-assistant-that-lets-users-ask-questions-about-chess-rules-all-formats-and-receive-answers-in-english",
@@ -74,6 +75,38 @@
         "REQ-8"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-replace-the-app-logo-shown-in-the-header-with-a-new-logo-asset-for-shriram-chess-assistant",
+      "title": "Replace the app logo shown in the header with a new logo asset for Shriram Chess Assistant.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-new-logo-image-file-s-as-static-frontend-assets-under-frontend-public-assets-generated-and-ensure-they-are-referenced-directly-not-served-via-the-backend",
+      "title": "Add the new logo image file(s) as static frontend assets under frontend/public/assets/generated and ensure they are referenced directly (not served via the backend).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fully-review-and-correct-all-chess-learning-assistant-examples-in-frontend-src-features-learning-examples-ts-so-that-every-step-to-step-transition-represents-a-legal-chess-move-for-the-piece-being-moved-and-each-step-s-board-position-move-text-and-lastmove-coordinates-are-consistent-with-each-other-including-the-scholar-s-mate-basic-checkmate-example-where-bishop-queen-moves-were-reported-incorrect",
+      "title": "Fully review and correct all Chess Learning Assistant examples in frontend/src/features/learning/examples.ts so that every step-to-step transition represents a legal chess move for the piece being moved, and each step’s board position, move text, and lastMove coordinates are consistent with each other (including the “Scholar's Mate (Basic Checkmate)” example where bishop/queen moves were reported incorrect).",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-lightweight-runtime-validation-for-learning-examples-that-runs-in-development-and-or-at-app-startup-to-detect-invalid-example-data-e-g-lastmove-not-matching-the-board-diff-illegal-piece-movement-or-inconsistent-move-notation-vs-coordinates-and-present-a-clear-english-error-message-in-the-learning-ui-if-an-example-is-invalid-so-incorrect-examples-are-not-silently-shown",
+      "title": "Add a lightweight runtime validation for learning examples that runs in development (and/or at app startup) to detect invalid example data (e.g., lastMove not matching the board diff, illegal piece movement, or inconsistent move notation vs. coordinates), and present a clear English error message in the Learning UI if an example is invalid so incorrect examples are not silently shown.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -104,6 +137,18 @@
     {
       "id": "AR-5",
       "summary": "Enable easy sharing with friends via WhatsApp (share link / WhatsApp share flow).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Change/update the app logo (branding update for Shriram Chess Assistant).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Fully review and correct all Chess Learning Assistant example moves (including basic checkmate) to ensure bishop/queen and all piece moves follow chess rules; update the app with corrected examples and rebuild.",
       "reqIds": [],
       "status": "pending"
     }

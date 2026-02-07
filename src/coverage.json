@@ -1,42 +1,49 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-07T16:59:24.821Z",
+  "generatedAt": "2026-02-07T17:53:35.020Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 1,
-    "implemented": 1,
+    "total": 2,
+    "implemented": 2,
     "items": [
       {
-        "id": "REQ-8",
-        "summary": "Publish the current Shriram Chess Assistant build by running a clean build and deployment so the app is accessible via its public canister URL, and verify that in-app sharing uses the deployed URL.",
+        "id": "REQ-11",
+        "summary": "Fully review and correct all Chess Learning Assistant examples in frontend/src/features/learning/examples.ts so that every step-to-step transition represents a legal chess move for the piece being moved, and each step’s board position, move text, and lastMove coordinates are consistent with each other (including the “Scholar's Mate (Basic Checkmate)” example where bishop/queen moves were reported incorrect).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/lib/share.ts",
-          "frontend/src/features/hosting/HostingView.tsx",
-          "frontend/PUBLISHING.md"
+          "frontend/src/features/learning/examples.ts"
         ],
         "matchedFiles": [
-          "frontend/src/lib/share.ts",
-          "frontend/src/features/hosting/HostingView.tsx",
-          "frontend/PUBLISHING.md"
+          "frontend/src/features/learning/examples.ts"
+        ]
+      },
+      {
+        "id": "REQ-12",
+        "summary": "Add a lightweight runtime validation for learning examples that runs in development (and/or at app startup) to detect invalid example data (e.g., lastMove not matching the board diff, illegal piece movement, or inconsistent move notation vs. coordinates), and present a clear English error message in the Learning UI if an example is invalid so incorrect examples are not silently shown.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/features/learning/exampleValidation.ts",
+          "frontend/src/features/learning/LearningView.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/features/learning/exampleValidation.ts",
+          "frontend/src/features/learning/LearningView.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
-    "backend/migration.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/PUBLISHING.md",
-    "frontend/src/features/hosting/HostingView.tsx",
-    "frontend/src/lib/share.ts",
+    "frontend/src/features/learning/LearningView.tsx",
+    "frontend/src/features/learning/exampleValidation.ts",
+    "frontend/src/features/learning/examples.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

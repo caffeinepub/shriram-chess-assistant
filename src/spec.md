@@ -1,11 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Publish the current Shriram Chess Assistant build with a clean build and deployment so it’s accessible via its public canister URL, and ensure in-app sharing uses the deployed URL.
+**Goal:** Ensure all Chess Learning Assistant example sequences use only legal chess moves with consistent board states, move text, and `lastMove` coordinates, and add dev/runtime validation to prevent invalid examples from being shown.
 
 **Planned changes:**
-- Run a clean build for both frontend and backend and deploy the app to its public canister URL.
-- Verify and, if needed, update the Header Share menu actions to use the deployed app URL for “Share on WhatsApp” and “Copy Link”.
-- Confirm all user-facing text remains in English.
+- Fully review and correct all learning examples in `frontend/src/features/learning/examples.ts` so each step-to-step transition is a legal move for the moved piece and the board position, move text, captures, and `lastMove.from/to` are consistent.
+- Fix the “Scholar's Mate (Basic Checkmate)” example so bishop/queen/knight moves follow standard movement rules and match the shown positions and metadata.
+- Add lightweight development/startup validation for example step data (e.g., illegal movement, `lastMove` not matching board diffs, inconsistent notation/coordinates) and show a clear English error message in the Learning UI when an example is invalid, without changing behavior when all examples are valid.
 
-**User-visible outcome:** Users can access the app via its public canister URL, and the Share menu correctly shares/copies the deployed app link (with a success toast for Copy Link).
+**User-visible outcome:** In the Learning view, users can step through every example without encountering illegal moves or inconsistent step data; if an example is invalid during development, the UI clearly indicates the example is invalid instead of displaying misleading steps.

@@ -32,7 +32,7 @@ export default function AppHeader() {
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
           <img
-            src="/assets/generated/shriram-chess-assistant-logo.dim_512x512.png"
+            src="/assets/generated/shriram-chess-assistant-logo-v2.dim_512x512.png"
             alt="Shriram Chess Assistant"
             className="h-10 w-10 rounded-lg"
           />

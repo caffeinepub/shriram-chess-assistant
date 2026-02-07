@@ -1,15 +1,15 @@
 {
   "frontend/src/App.tsx": "Main application component with TanStack Router setup, theme provider, and toast notifications for the three main routes (chat, learning, hosting).",
   "frontend/src/components/layout/AppLayout.tsx": "Root layout component that wraps all pages with header, main content area, and footer using React Router's Outlet.",
-  "frontend/src/components/layout/AppHeader.tsx": "Sticky header component with logo, navigation buttons for Chat/Learn/Hosting routes, and Share dropdown menu with WhatsApp share and copy link functionality using toast notifications.",
+  "frontend/src/components/layout/AppHeader.tsx": "Sticky header component with updated logo (v2), navigation buttons for Chat/Learn/Hosting routes, and Share dropdown menu with WhatsApp share and copy link functionality using toast notifications.",
   "frontend/src/components/layout/AppFooter.tsx": "Simple footer with copyright notice and caffeine.ai attribution with heart icon.",
   "frontend/src/features/chat/ChatView.tsx": "Main chat interface with message list, composer, and \"Show example\" button that integrates the rules assistant for answering chess questions.",
   "frontend/src/features/chat/ChatMessageList.tsx": "Scrollable message list component displaying user and assistant messages with avatars and auto-scroll behavior.",
   "frontend/src/features/chat/ChatComposer.tsx": "Chat input component with textarea, send button, loading states, and Enter-to-send functionality.",
-  "frontend/src/features/learning/LearningView.tsx": "Learning mode page with example selector, chessboard display, move stepper controls, and step-by-step navigation.",
+  "frontend/src/features/learning/LearningView.tsx": "Learning mode page with example selector, chessboard display, move stepper controls, and development-time validation that shows clear error messages when invalid example data is detected.",
   "frontend/src/features/learning/Chessboard.tsx": "Visual 8x8 chessboard component rendering pieces as Unicode symbols with square highlighting for last moves.",
   "frontend/src/features/learning/MoveStepper.tsx": "Move navigation controls with previous/next buttons, step counter, and clickable move list.",
-  "frontend/src/features/learning/examples.ts": "Three built-in chess examples (castling, en passant, Scholar's mate) with step-by-step positions, descriptions, and move annotations, with proper TypeScript typing for optional properties.",
+  "frontend/src/features/learning/examples.ts": "Three chess learning examples (castling, en passant, Scholar's mate) with corrected step-by-step board positions, move coordinates, and descriptions that follow standard chess rules.",
   "frontend/src/features/hosting/HostingView.tsx": "Information page explaining Internet Computer canister hosting with deployment steps, sharing instructions, and a display of the current detected public URL that will be used by the Share menu.",
   "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching chess rules and en passant explanations from the backend canister, with proper BigInt serialization for query keys.",
   "frontend/src/hooks/useRulesAssistant.ts": "Custom hook that processes user questions, matches them to rule topics, and returns deterministic answers with optional backend enrichment.",
@@ -17,5 +17,6 @@
   "frontend/src/lib/share.ts": "Share utility functions that use the app's root URL (origin) for WhatsApp sharing and clipboard copy, with robust guards against non-browser environments and fallback clipboard support.",
   "frontend/src/index.css": "Global styles with warm chess-themed OKLCH color palette (browns, ambers, creams) for both light and dark modes.",
   "frontend/tailwind.config.js": "Tailwind configuration with extended theme including custom fonts, colors mapped to CSS variables, and chess-appropriate design tokens.",
-  "frontend/PUBLISHING.md": "Comprehensive publish checklist documenting clean build steps, deployment verification, Share menu testing (WhatsApp and Copy Link with deployed URL), and troubleshooting guidance."
+  "frontend/PUBLISHING.md": "Comprehensive publish checklist documenting clean build steps, deployment verification, Share menu testing (WhatsApp and Copy Link with deployed URL), and troubleshooting guidance.",
+  "frontend/src/features/learning/exampleValidation.ts": "Validation utilities that check chess example steps for legal moves, correct piece placement, and coordinate consistency, returning detailed English error messages for any invalid data detected."
 }
