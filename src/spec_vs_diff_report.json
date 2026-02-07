@@ -1,0 +1,54 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T16:59:24.818Z",
+  "summary": "REQ-8 is only partially addressed in code/docs: share utilities now use the runtime origin (which should match the deployed canister URL), and a publishing checklist was added. However, the diff does not provide evidence of an actual deployment/publish configuration or verification, nor does it show the Header Share menu wiring/toast behavior required by the acceptance criteria.",
+  "missing_requirements": [
+    {
+      "id": "REQ-8",
+      "requirement": "Publish the current build so the app is accessible via its public canister URL, and verify in-app sharing uses the deployed URL (WhatsApp share + Copy Link with success toast).",
+      "reason": "The diff adds sharing utilities and a publishing checklist, but provides no evidence of (a) deployment being performed/configured (e.g., dfx config changes, canister IDs, deploy scripts) or (b) the Header Share menu implementation showing the required behaviors (WhatsApp prefilled message including deployed URL; Copy Link copies deployed URL and shows a success toast). The referenced header component is not included in the diff content.",
+      "evidence": [
+        "frontend/src/lib/share.ts",
+        "frontend/PUBLISHING.md",
+        "frontend-file-summaries.txt (mentions AppHeader Share menu behavior, but AppHeader diff not shown)"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "A clean build completes without errors for both frontend and backend.",
+      "reason": "Build success cannot be verified from the provided diff summary; there is no CI/log output or build verification evidence included.",
+      "evidence": [
+        "<file-diff> summary only (no build logs/config changes shown)"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "The deployed app is accessible via its public canister URL after publish.",
+      "reason": "No deployment artifacts or configuration updates are shown that would indicate a publish/deploy was performed or that a public canister URL was produced/validated.",
+      "evidence": [
+        "frontend/PUBLISHING.md (incomplete/truncated, does not show an executed deploy or resulting URL)"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Added backend state migration module and wired actor migration.",
+      "reason": "The BuildRequest allows adding backend/migration.mo only if state migration is required. The diff adds backend/migration.mo and references it from backend/main.mo, but the diff summary does not contain evidence that a state migration was required for this publish-only request.",
+      "evidence": [
+        "backend/migration.mo",
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "confidence": 0.62,
+  "changed_files": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "frontend-file-summaries.txt",
+    "frontend/PUBLISHING.md",
+    "frontend/src/features/hosting/HostingView.tsx",
+    "frontend/src/lib/share.ts",
+    "project_state.json"
+  ]
+}

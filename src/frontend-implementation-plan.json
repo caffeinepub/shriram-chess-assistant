@@ -1,0 +1,34 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Publish deployed Shriram Chess Assistant build (frontend readiness + deployed URL sharing)",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "summary": "Ensure the deployed build shares the public canister URL (not a route-specific/local URL) and add a publish/verification checklist for a clean deployment.",
+      "acceptanceCriteria": [
+        "A clean build completes without errors for both frontend and backend.",
+        "The deployed app is accessible via its public canister URL after publish.",
+        "In the deployed app, the Header Share menu actions work: (1) “Share on WhatsApp” opens WhatsApp with a prefilled message that includes the deployed app URL, and (2) “Copy Link” copies the deployed app URL and shows a success toast.",
+        "All user-facing text remains in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/lib/share.ts",
+          "operation": "modify",
+          "description": "Update sharing utilities to use a canonical deployed app URL (prefer the origin/root URL rather than window.location.href) so WhatsApp and Copy Link always reference the public canister URL even when users are on nested routes. Keep SSR/build-time guards and clipboard fallback logic intact."
+        },
+        {
+          "path": "frontend/src/features/hosting/HostingView.tsx",
+          "operation": "modify",
+          "description": "Enhance the Hosting page to display the app’s current detected public URL (derived from the browser location) alongside the existing canister URL explanation, reinforcing what URL the Share menu will use. Keep all user-facing text in English and avoid changes to any frontend/src/components/ui files."
+        },
+        {
+          "path": "frontend/PUBLISHING.md",
+          "operation": "create",
+          "description": "Add a concise publish checklist for doing a clean build + deploy and verifying the deployed canister URL, including in-app Share menu verification steps (WhatsApp prefill includes deployed URL; Copy Link copies deployed URL and triggers the existing success toast). Reference the github-export-icp-cli / build-template-react deployment scripts/config at a high level and include a note to verify the component’s usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

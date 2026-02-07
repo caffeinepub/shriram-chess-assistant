@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Build and host an online AI chatbot called \"Shriram Chess Assistant\" to answer chess rules questions across formats, provide learning examples with board/move visualization, operate as a text-first (just words) app, and be easily shareable with friends via WhatsApp.",
+  "architectural_notes": [
+    "Product: text-first chat app with optional chessboard/move visualization for learning examples.",
+    "Distribution: provide a shareable public URL and WhatsApp sharing entry point."
+  ],
+  "known_issues": [
+    "Build/app generation failed when attempting to add the WhatsApp share button; user requested retry."
+  ],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-text-first-chat-experience-titled-shriram-chess-assistant-that-lets-users-ask-questions-about-chess-rules-all-formats-and-receive-answers-in-english",
+      "title": "Create a text-first chat experience titled \"Shriram Chess Assistant\" that lets users ask questions about chess rules (all formats) and receive answers in English.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-deterministic-non-llm-chess-rules-assistant-engine-that-answers-common-chess-rules-questions-across-formats-e-g-standard-classical-rapid-blitz-bullet-and-includes-coverage-for-legal-moves-check-checkmate-stalemate-castling-en-passant-promotion-draw-rules-threefold-repetition-50-75-move-insufficient-material-agreement-touch-move-guidance-as-a-general-concept-time-controls-and-basic-tournament-online-variations-responses-must-be-safe-factual-and-include-brief-examples-when-helpful",
+      "title": "Implement a deterministic (non-LLM) chess rules assistant engine that answers common chess-rules questions across formats (e.g., standard/classical, rapid, blitz, bullet) and includes coverage for: legal moves, check/checkmate, stalemate, castling, en passant, promotion, draw rules (threefold repetition, 50/75-move, insufficient material, agreement), touch-move guidance as a general concept, time controls, and basic tournament/online variations. Responses must be safe, factual, and include brief examples when helpful.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-chess-learning-assistant-mode-that-can-present-examples-with-a-visible-chessboard-and-step-by-step-moves-the-user-must-be-able-to-trigger-an-example-from-chat-e-g-via-a-button-suggested-prompt-like-show-an-example-and-then-see-a-board-with-a-move-list-that-can-be-stepped-through-next-previous-with-highlighted-last-move",
+      "title": "Add a “Chess Learning Assistant” mode that can present examples with a visible chessboard and step-by-step moves. The user must be able to trigger an example from chat (e.g., via a button/suggested prompt like “Show an example”) and then see a board with a move list that can be stepped through (Next/Previous) with highlighted last move.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-a-clear-host-online-help-section-inside-the-app-explaining-how-the-app-is-hosted-as-an-internet-computer-canister-and-how-the-user-can-obtain-share-the-public-url-after-deployment-in-english",
+      "title": "Provide a clear “Host online” help section inside the app explaining how the app is hosted as an Internet Computer canister and how the user can obtain/share the public URL after deployment (in English).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-whatsapp-sharing-flow-that-lets-the-user-share-the-app-link-with-friends-by-opening-whatsapp-with-a-prefilled-message-containing-the-deployed-app-url",
+      "title": "Add a WhatsApp sharing flow that lets the user share the app link with friends by opening WhatsApp with a prefilled message containing the deployed app URL.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-cohesive-creative-visual-theme-appropriate-for-a-chess-learning-assistant-avoid-blue-purple-by-default-including-typography-spacing-and-a-consistent-component-style-across-chat-learning-mode-and-hosting-share-sections",
+      "title": "Apply a cohesive, creative visual theme appropriate for a chess learning assistant (avoid blue/purple by default), including typography, spacing, and a consistent component style across chat, learning mode, and hosting/share sections.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-build-generation-failure-related-to-the-whatsapp-sharing-ui-so-the-app-builds-successfully-and-the-existing-share-menu-in-the-header-reliably-supports-both-share-on-whatsapp-opens-whatsapp-with-a-prefilled-message-containing-the-current-deployed-app-url-and-copy-link-copies-the-current-url-and-shows-a-success-error-toast-all-user-facing-text-must-be-in-english",
+      "title": "Fix the build/generation failure related to the WhatsApp sharing UI so the app builds successfully and the existing Share menu in the header reliably supports both “Share on WhatsApp” (opens WhatsApp with a prefilled message containing the current deployed app URL) and “Copy Link” (copies the current URL and shows a success/error toast). All user-facing text must be in English.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-publish-the-current-shriram-chess-assistant-build-by-running-a-clean-build-and-deployment-so-the-app-is-accessible-via-its-public-canister-url-and-verify-that-in-app-sharing-uses-the-deployed-url",
+      "title": "Publish the current Shriram Chess Assistant build by running a clean build and deployment so the app is accessible via its public canister URL, and verify that in-app sharing uses the deployed URL.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create AI chatbot named \"Shriram Chess Assistant\" to answer queries about chess rules across all formats.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Provide guidance/setup to host the chatbot online for public access.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add chess learning mode with examples showing a chessboard and moves.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Build as a text-first \"just words\" app (simple chat UI).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Enable easy sharing with friends via WhatsApp (share link / WhatsApp share flow).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Shriram Chess Assistant",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

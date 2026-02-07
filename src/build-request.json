@@ -1,0 +1,40 @@
+{
+  "kind": "build_request",
+  "title": "Publish the deployed Shriram Chess Assistant build",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "text": "Publish the current Shriram Chess Assistant build by running a clean build and deployment so the app is accessible via its public canister URL, and verify that in-app sharing uses the deployed URL.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "publish it."
+        ]
+      },
+      "acceptanceCriteria": [
+        "A clean build completes without errors for both frontend and backend.",
+        "The deployed app is accessible via its public canister URL after publish.",
+        "In the deployed app, the Header Share menu actions work: (1) “Share on WhatsApp” opens WhatsApp with a prefilled message that includes the deployed app URL, and (2) “Copy Link” copies the deployed app URL and shows a success toast.",
+        "All user-facing text remains in English."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor in backend/main.mo; add backend/migration.mo only if state migration is required.",
+    "Do not edit files under frontend/src/components/ui or any paths listed in frontend.immutablePaths.",
+    "No third-party authentication providers; only Internet Identity is supported."
+  ],
+  "nonGoals": [
+    "Adding new product features or new pages beyond publishing the current build.",
+    "Changing the chess rules assistant behavior/content beyond what already exists.",
+    "Introducing any external database or third-party backend services."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
